@@ -10,7 +10,18 @@ function RenderPokedex() {
             api.get('/pokemon/' + i).then((response) => {
                 pokemonsAll.push(response.data)
                 if(response.data.id===150){
-                    resolve(pokemonsAll)
+
+
+                    resolve(pokemonsAll.sort(function(a,b){
+                        if(a.id>b.id){
+                            return 1
+
+                        }
+                        if(a.id <b.id){
+                            return -1
+                        }
+                        return 0
+                    }))
                 }
 
 
